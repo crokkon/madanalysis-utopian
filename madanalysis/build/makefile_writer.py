@@ -493,6 +493,7 @@ class MakefileWriter():
         file.write('link: $(OBJS)\n')
         if not ProductPath.endswith('/'):
             ProductPath=ProductPath+'/'
+        file.write('\t@mkdir -p '+ProductPath+'\n')
         if isLibrary:
             if options.isMac:
                 file.write('\t$(CXX) -shared -flat_namespace -dynamiclib -undefined suppress -o '+ProductPath+'$(LIBRARY) $(OBJS) $(LIBFLAGS)\n')
